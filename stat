@@ -1,0 +1,38 @@
+import math
+
+
+def variance(data, mean1, ddof=0):
+    a = len(data)
+    var = sum((x - mean1) ** 2 for x in data) / (a - ddof)
+    print('variance:', var)
+
+
+def stdev(data, mean1, ddof=0):
+    a = len(data)
+    var = sum((x - mean1) ** 2 for x in data) / (a - ddof)
+    st_dev = math.sqrt(var)
+    print('standard deviation:', st_dev)
+
+
+lst = []
+num = int(input('input number of scores: '))
+for n in range(num):
+    nums = int(input('enter number: '))
+    lst.append(nums)
+print('sum of all scores:', sum(lst))
+mean = sum(lst) / num
+print('mean of all scores:', mean)
+
+while True:
+    ifCalc = str(input('what do i find? '))
+    if ifCalc == 'pvariance':
+        variance(lst, mean)
+    elif ifCalc == 'svariance':
+        variance(lst, mean, 1)
+    elif ifCalc in ['standard deviation', 'sd']:
+        stdev(lst, mean)
+    elif ifCalc in ['sample standard deviation', 'sample sd']:
+        stdev(lst, mean, 1)
+    else:
+        print('thank you for using this program!')
+        break
